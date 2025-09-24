@@ -1,0 +1,115 @@
+# Documentation
+README.md
+
+# Python cache files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.cursor/
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+tests/
+*_test.py
+*_tests.py
+test_*.py
+tests_*.py
+
+# Logs
+*.log
+logs/
+
+# Local development files
+.DS_Store
+Thumbs.db
+.dockerignore
+
+# Jupyter Notebooks (if not needed in production)
+*.ipynb
+.ipynb_checkpoints/
+
+# Development scripts and configuration
+dev_*.py
+*_dev.py
+setup.cfg
+pyproject.toml
+setup.py
+tox.ini
+mypy.ini
+.flake8
+.pylintrc
+.pre-commit-config.yaml
+
+# Documentation files
+docs/
+*.md
+LICENSE
+CHANGELOG.md
+CONTRIBUTING.md
+
+# Temporary files
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Local data files (if not needed in production)
+data/
+*.csv
+*.json
+*.xlsx
+*.xls
+*.parquet
+*.pickle
+*.pkl
+!model/model.pkl
+
+# Debugging
+.debug/
+debug.py
+debug_*.py
+*.debug
+
+# CI/CD files
+.github/
+.gitlab/
+.travis.yml
+.circleci/
+azure-pipelines.yml
+Jenkinsfile
