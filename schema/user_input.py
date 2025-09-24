@@ -9,7 +9,7 @@ class UserInput(BaseModel):
     income_lpa: float = Field(..., ge=0, description='Annual income in LPA', )
     smoker: bool = Field(..., description='Whether the user is a smoker', )
     city: str = Field(..., description='City of residence', )
-    occupation: Literal['retired','freelancer','student','government_job',' business_owner','unemployed','private_job'] = Field(...,  description='User occupation',)
+    occupation: Literal['retired','freelancer','student','government_job','business_owner','unemployed','private_job'] = Field(...,  description='User occupation',)
 
     @computed_field
     @property

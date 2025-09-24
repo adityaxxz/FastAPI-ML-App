@@ -37,9 +37,27 @@ if st.button("Predict Premium Category"):
         if response.status_code == 200:
             prediction = result
             st.success(f"Predicted Insurance Premium Category: **{prediction['predicted_category']}**")
-            st.write("🔍 Confidence:", prediction["confidence"])
-            st.write("📊 Class Probabilities:")
-            st.json(prediction["class_probabilities"])
+            
+            # Display confidence with a progress bar
+            st.write("🔍 **Model Confidence:**")
+            st.progress(prediction["confidence"])
+            st.write(f"{prediction['confidence']:.1%}")
+            
+            # Display class probabilities with progress bars
+            st.write("📊 **Category Probabilities:**")
+            class_probs = prediction["class_probabilities"]
+            
+            # Sort probabilities in descending order for better visualization
+            sorted_probs = sorted(class_probs.items(), key=lambda x: x[1], reverse=True)
+            
+            for category, probability in sorted_probs:
+                col1, col2, col3 = st.columns([2, 3, 1])
+                with col1:
+                    st.write(f"**{category}**")
+                with col2:
+                    st.progress(probability)
+                with col3:
+                    st.write(f"{probability:.1%}")
 
         else:
             st.error(f"API Error: {response.status_code}")
