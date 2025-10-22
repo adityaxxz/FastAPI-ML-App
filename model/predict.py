@@ -25,3 +25,5 @@ def predict_output(user_input: dict):
         "confidence": round(confidence, 4),
         "class_probabilities": class_probs,
     }
+
+

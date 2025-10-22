@@ -11,6 +11,13 @@ class UserInput(BaseModel):
     city: str = Field(..., description='City of residence', )
     occupation: Literal['retired','freelancer','student','government_job','business_owner','unemployed','private_job'] = Field(...,  description='User occupation',)
 
+    @field_validator('city')
+    @classmethod
+    def normalize_city(cls, val: str) -> str:
+        val = val.strip().title()   
+        return val
+    
+    
     @computed_field
     @property
     def bmi(self) -> float:
@@ -47,8 +54,3 @@ class UserInput(BaseModel):
         else:
             return 3
         
-    @field_validator('city')
-    @classmethod
-    def normalize_city(cls, val: str) -> str:
-        val = val.strip().title()
-        return val

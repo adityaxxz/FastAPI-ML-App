@@ -1,0 +1,34 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: fastapi-ml-backend
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "uvicorn app:app --host 0.0.0.0 --port $PORT"
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+      - key: MODEL_VERSION
+        value: 1.0.0
+
+  # Streamlit Frontend Service  
+  - type: web
+    name: fastapi-ml-frontend
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "streamlit run frontend.py --server.port $PORT --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false"
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+      - key: API_URL
+        fromService:
+          type: web
+          name: fastapi-ml-backend
+          property: host
